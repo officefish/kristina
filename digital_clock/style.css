@@ -40,7 +40,7 @@ html, body {
     transform: translate(-50%, -50%);
 }
 
-.wrapper .display #time {
+.wrapper .display .time {
     line-height: 85px;
     font-size: 3em;
     font-weight: 600;
@@ -54,7 +54,21 @@ html, body {
     * the background shows through*/
     -webkit-text-fill-color: transparent;
     animation: hue360 1.5s linear infinite;
+
+    display:grid;
+    grid-template-columns: 15% 10% 15% 10% 15% 5% 30%;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    min-width: 0; 
+    gap: 0.05em;
 }
+
+.wrapper .display .time div {
+    display: inline-flex;
+    justify-content: center;
+    min-width: 20px;
+}
+
 
 .wrapper span {
     width: 100%;
