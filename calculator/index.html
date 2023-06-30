@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator using javascript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<div class="container">
+    
+    <div class="calculator">
+
+        <form>
+            <div class="display">
+                <input id="screen" type="text" name="display" value="">
+            </div>
+            <div>
+                <input type="button" value="AC" class="operator" onclick="displayReset()"> 
+                <input type="button" value="DE" class="operator" onclick="deleteLast()">
+                <input type="button" value="." class="operator" onclick="dot(this.value)">
+                <input type="button" value="/" class="operator" onclick="math(this.value)">
+            </div>
+            <div>
+                <input type="button" value="7"  onclick="accumulate(this.value)">
+                <input type="button" value="8" onclick="accumulate(this.value)">
+                <input type="button" value="9" onclick="accumulate(this.value)">
+                <input type="button" value="*" class="operator" onclick="math(this.value)">
+            </div>
+            <div>
+                <input type="button" value="4" onclick="accumulate(this.value)">
+                <input type="button" value="5" onclick="accumulate(this.value)">
+                <input type="button" value="6" onclick="accumulate(this.value)">
+                <input type="button" value="-" class="operator" onclick="math(this.value)">
+            </div>
+            <div>
+                <input type="button" value="1" onclick="accumulate(this.value)">
+                <input type="button" value="2" onclick="accumulate(this.value)">
+                <input type="button" value="3" onclick="accumulate(this.value)">
+                <input type="button" value="+" class="operator" onclick="math(this.value)">
+            </div>
+            <div>
+                <input type="button" value="00" onclick="accumulate(this.value)">
+                <input type="button" value="0" onclick="accumulate(this.value)">
+                <input class="equal operator" type="button" value="=" onclick="calculate()">
+            </div>
+        </form>
+
+    </div>
+
+</div>
+<script>
+    const screen = document.querySelector('#screen')
+    let expression = "0"
+
+    let calculated = false
+
+    function deleteLast() {
+        expression = expression.slice(0, -1)
+        if (!expression.length) {
+            expression = "0"
+        }
+        screen.value = expression        
+    }
+
+    function math(value) {
+        if (
+            expression &&
+            expression.includes("+")
+        || expression.includes("-")
+        || expression.includes("/")
+        || expression.includes("*")
+        )
+        {
+            calculate()
+            calculated = false
+            expression += value
+            screen.value = expression
+        } else {
+            calculated = false
+            accumulate(value)
+        }
+    }
+    
+    function dot(value) {
+        const components = expression.split("*/+-")
+        if (components[components.length - 1].includes(value)
+        ) return
+
+        accumulate(value)
+    }
+
+    function accumulate(value) {
+
+        if(calculated) {
+            calculated = false
+            displayReset()
+        }
+
+        if (expression.length >= 10) return
+
+        if (expression.length == 1 && expression.includes("0")) {
+            expression = ""
+        }
+
+        expression += value
+        
+        if (expression.length > 10) {
+            expression = expression.substring(0, 10)
+        } 
+
+        screen.value = expression
+    }
+
+    function displayReset() { 
+        console.log("reset")
+        expression = "0"
+        screen.value = expression
+        console.log(expression)
+        console.log(screen.value)
+    }
+
+    function calculate() {
+        expression = "" + eval(expression)
+
+        if (expression.length > 10) {
+            expression = expression.substring(0, 10)
+        } 
+
+        screen.value = expression
+        calculated = true
+    }
+
+    displayReset()
+
+</script>
+</body>
+</html>
