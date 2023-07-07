@@ -84,7 +84,8 @@
     }
     
     function dot(value) {
-        const components = expression.split("*/+-")
+        let regex = /\*\/\+-/i;
+        const components = expression.split(regex)
         if (components[components.length - 1].includes(value)
         ) return
 
@@ -114,11 +115,8 @@
     }
 
     function displayReset() { 
-        console.log("reset")
         expression = "0"
         screen.value = expression
-        console.log(expression)
-        console.log(screen.value)
     }
 
     function calculate() {
@@ -137,3 +135,4 @@
 </script>
 </body>
 </html>
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive navbar</title>
+    <link rel="stylesheet" href="style.css">
+   </head>
+<body>
+    <header>
+
+        <div class="navbar">
+             <!--logo-->
+            <div class="logo">
+                <a href="#">Web dev creative</a>
+            </div>
+            <!-- nav -->
+            <nav>   
+                <li><a href="hero">Hero</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="services">Services</a></li>
+                <li><a href="contact">Contact</a></li>
+            </nav>
+            <!-- action -->
+            <a href="#" class="action-btn">Get Started</a>
+            <!-- toggle menu -->
+            <div class="toggle_btn">
+                <ion-icon name="menu"></ion-icon>
+            </div>
+
+        </div>
+        <ul class="dropdown_menu">
+            <li><a href="#">Hero</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#" class="action-btn">Get Started</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>Welcome</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br/>
+            Soluta, odit mollitia? Consequatur a, molestias ut.
+        </section>
+    </main>
+
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn ion-icon')
+        const dropdownMenu = document.querySelector('.dropdown_menu')
+
+        toggleBtn.onclick = function () {
+            dropdownMenu.classList.toggle('open')
+
+            const isOpen = dropdownMenu.classList.contains('open')
+
+            toggleBtnIcon.name = isOpen
+                ? "close"
+                : "menu"
+        }
+
+    </script>
+
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</html>
