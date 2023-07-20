@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --skill-size: 160px;
+    --half-skill-size: calc(var(--skill-size) / 2);
+}
+
+body {
+    height: 100vh;
+    background: #e3edf7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill {
+    width: var(--skill-size);
+    height: var(--skill-size);
+    position: relative;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.skill .outer {
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, .15),
+    -6px -6px 10px -1px rgba(255, 255, 255, .7);
+    padding: calc(var(--skill-size) * .1);
+}
+
+.skill .outer .inner {
+   
+
+    width: calc(var(--skill-size) *.8);
+    height: calc(var(--skill-size) *.8);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* border: 1px solid blue; */
+    box-shadow: 
+    inset 4px 4px 6px -1px rgba(0, 0, 0, .15),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, .7),
+    -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+    0.5px 0.5px 0px rgba(0, 0, 0, .15),
+    0px 12px 10px -10px rgba(0, 0, 0, .05);
+}
+
+.skill .outer .inner #number {
+    font-weight: 600;
+    color: #555;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+circle {
+    
+    fill: none;
+    stroke: url(#GradientColor);
+    stroke-width: calc(var(--skill-size) * .1);
+    stroke-linecap: round;
+
+    stroke-dasharray: 320%;
+    stroke-dashoffset: 300%;
+    
+    cx: var(--half-skill-size);
+    cy: var(--half-skill-size); 
+    r:  calc(var(--half-skill-size) * .9);
+
+    animation: progress-anim 2s linear forwards;
+}
+
+@keyframes progress-anim {
+    100% {
+        stroke-dashoffset: calc(40% + 280% * (1 - var(--percentage) ) );
+    }
+}

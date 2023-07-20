@@ -1,3 +1,5 @@
 {
-    "livePreview.defaultPreviewPath": "/index.html"
+    "livePreview.defaultPreviewPath": "/index.html",
+    "css.lint.validProperties": ["cx", "cy", "r"],
+    "scss.lint.validProperties": ["cx", "cy", "r"]
 }
