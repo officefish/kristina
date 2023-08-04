@@ -89,6 +89,6 @@ circle {
 
 @keyframes progress-anim {
     100% {
-        stroke-dashoffset: calc(40% + 280% * (1 - var(--percentage) ) );
+        stroke-dashoffset: calc(320% * (1 - var(--percentage) ) );
     }
 }
